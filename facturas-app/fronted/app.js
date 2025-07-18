@@ -7,6 +7,7 @@ document.getElementById("invoiceForm").addEventListener("submit", async (e) => {
         telefono: formData.get("teléfono"),
         direccion: formData.get("Dirección"), 
         Nombredelproducto: formData.get("Nombre producto"),
+        imei: formData.get("imei"),
         monto: formData.get("monto"),
     };
 
