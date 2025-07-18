@@ -8,6 +8,7 @@ document.getElementById("invoiceForm").addEventListener("submit", async (e) => {
         direccion: formData.get("Dirección"), 
         Nombredelproducto: formData.get("Nombre producto"),
         imei: formData.get("imei"),
+        formaPago: formData.get("formaPago"),
         monto: formData.get("monto"),
     };
 
