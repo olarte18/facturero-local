@@ -12,13 +12,13 @@ app.post('/api/generar-factura', (req, res) => {
     const { cliente, telefono,direccion,imei,Nombredelproducto, monto ,formaPago } = req.body;
 
     const doc = new PDFDocument({        size: [226, 430],  // 80mm de ancho
-        margin: 10});
+        margin: 1});
     const filename = `factura-${Date.now()}.pdf`;
     const filepath = `./facturas/${filename}`;
     
     
     doc.pipe(fs.createWriteStream(filepath));
-    doc.font('Helvetica-Bold').fontSize(9);
+    doc.font('Helvetica-Bold').fontSize(6);
    doc.moveTo(10, doc.y).lineTo(216, doc.y).dash(1, { space: 2 }).stroke().undash();
 
     doc.moveDown();
