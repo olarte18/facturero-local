@@ -9,16 +9,16 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.post('/api/generar-factura', (req, res) => {
-    const { cliente, telefono,direccion,imei,Nombredelproducto, monto ,formaPago } = req.body;
+    const { cliente, telefono,direccion,imei,Nombredelproducto, monto ,formaPago , tipo} = req.body;
 
-    const doc = new PDFDocument({        size: [226, 430],  // 80mm de ancho
-        margin: 1});
+    const doc = new PDFDocument({        size: [226, 230],  // 80mm de ancho
+        margin: 0});
     const filename = `factura-${Date.now()}.pdf`;
     const filepath = `./facturas/${filename}`;
     
     
     doc.pipe(fs.createWriteStream(filepath));
-    doc.font('Helvetica-Bold').fontSize(6);
+    doc.font('Helvetica-Bold').fontSize(1);
    doc.moveTo(10, doc.y).lineTo(216, doc.y).dash(1, { space: 2 }).stroke().undash();
 
     doc.moveDown();
@@ -46,6 +46,7 @@ app.post('/api/generar-factura', (req, res) => {
        doc.moveTo(10, doc.y).lineTo(216, doc.y).dash(1, { space: 2 }).stroke().undash();
     doc.moveDown();
     doc.text(`Producto: ${Nombredelproducto}`);
+    doc.text(`Tipo: ${tipo}`);
     doc.text(`IMEI: ${imei}`);
     doc.text(`Monto: $${monto}`);
     doc.moveDown();

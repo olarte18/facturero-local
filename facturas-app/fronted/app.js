@@ -10,6 +10,7 @@ document.getElementById("invoiceForm").addEventListener("submit", async (e) => {
         imei: formData.get("imei"),
         formaPago: formData.get("formaPago"),
         monto: formData.get("monto"),
+        tipo: formData.get("Tipo")
     };
 
     const response = await fetch("http://localhost:3000/api/generar-factura", {
