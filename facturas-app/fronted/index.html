@@ -1,53 +1,94 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Generador de Facturas</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <title>Generador de Facturas</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="icon" type="image/png" href="logo.svg"/> 
 </head>
-<body class="p-4">
-    <h1>Generador de Facturas</h1>
-    <form id="invoiceForm">
-        <div class="mb-3">
-            <label>Nombre del Cliente</label>
-            <input type="text" class="form-control" name="cliente" required>
-        </div>
-            <div class="mb-3">
-            <label>Teléfono</label>
-            <input type="text" class="form-control" name="teléfono" required>
-        </div>
-         <div class="mb-3">
-            <label>Dirección</label>
-            <input type="text" class="form-control" name="Dirección" required>
-        </div>
-        <div class="mb-3">
-            <label>Nombre del producto</label>
-            <input type="text" class="form-control" name="Nombre producto" required>
-        </div>
-        <div class="mb-3">
-            <label>Tipo</label>
-            <select class="form-select" name="Tipo" required>
-                <option value="Nuevo">Nuevo</option>
-                <option value="Usado">Usado</option>       
-            </select>
-        </div>          
-        <div class="mb-3">
-            <label>IMEI</label>
-            <input type="text" class="form-control" name="imei" required>
-        </div>
-        <div class="mb-3">
-            <label>Forma de Pago</label>
-            <select class="form-select" name="formaPago" required>
-                <option value="Efectivo">Efectivo</option>
-                <option value="Crédito">Crédito</option>
-            </select>
-        <div class="mb-3">
-            <label>Monto</label>
-            <input type="number" class="form-control" name="monto" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Generar Factura</button>
-    </form>
+<body class="bg-light d-flex align-items-center justify-content-center vh-100">
+<!-- favicom    --> 
 
-    <script src="app.js"></script>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+<div class="d-flex align-items-center mb-4">
+  <img src="logo.svg" alt="Logo Móvil Box" 
+       width="60" height="60" class="me-2">
+  <h1 class="mb-0">Móvil Box - Generador de Facturas</h1>
+</div>
+
+        <!-- Tarjeta -->
+        <div class="card shadow-lg rounded-4">
+          <div class="card-header text-center bg-primary text-white rounded-top-4">
+            <h3 class="mb-0">Generador de Facturas</h3>
+          </div>
+          <div class="card-body p-4">
+            
+            <form id="invoiceForm">
+              <div class="mb-3">
+                <label class="form-label">Nombre del Cliente</label>
+                <input type="text" class="form-control" name="cliente" placeholder="Ej: Juan Pérez" required>
+              </div>
+              
+              <div class="mb-3">
+                <label class="form-label">Teléfono</label>
+                <input type="text" class="form-control" name="teléfono" placeholder="Ej: 3001234567" required>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Dirección</label>
+                <input type="text" class="form-control" name="Dirección" placeholder="Ej: Calle 10 #15-23" required>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Nombre del Producto</label>
+                <input type="text" class="form-control" name="Nombre producto" placeholder="Ej: Celular Samsung" required>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Tipo</label>
+                <select class="form-select" name="Tipo" required>
+                  <option value="" disabled selected>Seleccione...</option>
+                  <option value="Nuevo">Nuevo</option>
+                  <option value="Usado">Usado</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">IMEI</label>
+                <input type="text" class="form-control" name="imei" placeholder="Ej: 356938035643809" required>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Forma de Pago</label>
+                <select class="form-select" name="formaPago" required>
+                  <option value="" disabled selected>Seleccione...</option>
+                  <option value="Efectivo">Efectivo</option>
+                  <option value="Crédito">Crédito</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Monto</label>
+                <input type="number" class="form-control" name="monto" placeholder="Ej: 1500000" required>
+              </div>
+
+              <div class="d-grid">
+                <button type="submit" class="btn btn-primary btn-lg rounded-pill">
+                  💳 Generar Factura
+                </button>
+              </div>
+            </form>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
 </body>
 </html>

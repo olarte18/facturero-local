@@ -11,18 +11,18 @@ app.use(bodyParser.json());
 app.post('/api/generar-factura', (req, res) => {
     const { cliente, telefono,direccion,imei,Nombredelproducto, monto ,formaPago , tipo} = req.body;
 
-    const doc = new PDFDocument({        size: [226, 230],  // 80mm de ancho
-        margin: 0});
-    const filename = `factura-${Date.now()}.pdf`;
+    const doc = new PDFDocument({        size: [100, 100],  // 80mm de ancho
+        margin: 1});
+    const filename = `factura-${cliente}.pdf`;
     const filepath = `./facturas/${filename}`;
     
     
     doc.pipe(fs.createWriteStream(filepath));
-    doc.font('Helvetica-Bold').fontSize(1);
+    doc.font('Helvetica-Bold').fontSize(2);
    doc.moveTo(10, doc.y).lineTo(216, doc.y).dash(1, { space: 2 }).stroke().undash();
 
     doc.moveDown();
-    doc.text('Movilbox');
+    doc.text('Maxtec.F&E');
     doc.text('Nit 11037137706-6')
     doc.text('Franklin Olarte');
     doc.text('3108098654');
@@ -34,14 +34,16 @@ app.post('/api/generar-factura', (req, res) => {
     doc.moveDown();
    doc.moveTo(10, doc.y).lineTo(216, doc.y).dash(1, { space: 2 }).stroke().undash();
     doc.moveDown();
-    doc.text(`Cliente: ${cliente}`);
+    doc.text(`Cliente: `);
+    doc.text(`${cliente}`);
     doc.text(`Teléfono: ${telefono}`);
     doc.text(`Dirección: ${direccion}`);
     doc.moveDown();
 
        doc.moveTo(10, doc.y).lineTo(216, doc.y).dash(1, { space: 2 }).stroke().undash();
        doc.moveDown();
-    doc.text('DETALLE DE LA FACTURA', { align: 'center' });
+    doc.text('DETALLE DE ');
+    doc.text('LA FACTURA',{align: 'left' });
     doc.moveDown();
        doc.moveTo(10, doc.y).lineTo(216, doc.y).dash(1, { space: 2 }).stroke().undash();
     doc.moveDown();
@@ -54,7 +56,7 @@ app.post('/api/generar-factura', (req, res) => {
  
 
     doc.moveDown();
-    doc.text('FORMA DE PAGO',{align: 'center' });
+    doc.text('FORMA DE PAGO',{align: 'left' });
     doc.moveDown();
    doc.moveTo(10, doc.y).lineTo(216, doc.y).dash(1, { space: 2 }).stroke().undash();
 
@@ -67,10 +69,11 @@ app.post('/api/generar-factura', (req, res) => {
     doc.moveTo(10, doc.y).lineTo(216, doc.y).dash(1, { space: 2 }).stroke().undash();
 
     doc.moveDown();
-    doc.text('GRACIAS POR SU COMPRA!', { align: 'center' });
+    doc.text('GRACIAS POR');
+    doc.text('SU COMPRA');
     doc.moveDown();
  
-    doc.text('CONSERVE SU FACTURA PARA GARANTIA', { align: 'center' });
+    doc.fontSize(1).text('Conserve su factura para garantia', { align: 'left' });
     doc.moveDown();
     doc.moveTo(10, doc.y).lineTo(216, doc.y).dash(1, { space: 2 }).stroke().undash();
 
